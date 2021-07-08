@@ -1,14 +1,7 @@
-// order of imports:
-
-// external
-// import { useState } from 'react';
-
-// things you've written
-// import SomeComponent from '../SomeComponent/SomeComponent';
 import './Header.css';
 
 function Header (props) {
-  console.log('This is what the Header Component receives:', props);
+  console.log('In Header Component with props:', props);
 
   return (
     <>
@@ -18,13 +11,3 @@ function Header (props) {
 }
 
 export default Header;
-
-
-// function Header ({title, comment}) {
-//   const content = title
-//   const extraContent = comment;
-//   return (
-//     <h1>{content}</h1>
-//     <h2>{extraContent} </h2>
-//   );
-// }
