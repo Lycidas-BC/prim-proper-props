@@ -9,11 +9,11 @@ router.get('/', (req, res) => {
     const sqlText = `SELECT * FROM guests ORDER BY name ASC;`;
     pool.query(sqlText)
         .then((result) => {
-            console.log(`Got stuff back from the database`, result);
+            //console.log(`Got stuff back from the database`, result);
             res.send(result.rows);
         })
         .catch((error) => {
-            console.log(`Error making database query ${sqlText}`, error);
+            //console.log(`Error making database query ${sqlText}`, error);
             res.sendStatus(500); // Good server always responds
         })
 })
@@ -28,13 +28,37 @@ router.post('/', (req, res) => {
     // the $1, $2, etc get substituted with the values from the array below
     pool.query(sqlText, [guest.name, guest.kidsMeal])
         .then((result) => {
-            console.log(`Added creature to the database`, guest);
+            //console.log(`Added creature to the database`, guest);
+            res.sendStatus(201);
+        })
+        .catch((error) => {
+            //console.log(`Error making database query ${sqlText}`, error);
+            res.sendStatus(500); // Good server always responds
+        })
+})
+
+// Setup a DELETE route remove a guest from
+router.delete('/:id', (req, res) => {
+    const id = req.params.id;
+    console.log(id);
+    if(id && id !== ""){
+    const sqlText = `
+        DELETE FROM "guests"
+        WHERE "id"=$1;
+    `;
+    
+    pool.query(sqlText, [id])
+        .then((result) => {
+            console.log(`Deleted guest from the database`, id);
             res.sendStatus(201);
         })
         .catch((error) => {
             console.log(`Error making database query ${sqlText}`, error);
             res.sendStatus(500); // Good server always responds
         })
+    } else {
+        res.sendStatus(500).send('no id');
+    }
 })
 
 
