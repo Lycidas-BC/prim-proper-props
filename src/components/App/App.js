@@ -8,7 +8,8 @@ import GuestList from '../GuestList/GuestList';
 import DinnerSupplies from '../DinnerSupplies/DinnerSupplies';
 import GuestForm from '../GuestForm/GuestForm';
 import PartyLeader from '../PartyLeader/PartyLeader';
-
+import DeleteGuest from '../DeleteGuest/DeleteGuest';
+import Guest from '../Guest/Guest';
 
 function App() {
   let [guestList, setGuestList] = useState([]);
@@ -84,7 +85,12 @@ function App() {
       setNewGuestMeal={setNewGuestMeal}
       handleSubmit={handleSubmit}
     />
-    <GuestList guestList={guestList} deleteGuestFromDb={deleteGuestFromDb}/>
+    <GuestList
+      guestList={guestList}
+      deleteGuestFromDb={deleteGuestFromDb}
+      Guest={Guest}
+      DeleteGuest={DeleteGuest}
+    />
     <DinnerSupplies guestList={guestList} />
     <Footer />
   </div>

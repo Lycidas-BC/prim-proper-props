@@ -1,7 +1,6 @@
 import './GuestList.css';
-import DeleteGuest from '../DeleteGuest/DeleteGuest';
 
-function GuestList ({guestList, deleteGuestFromDb}) {
+function GuestList ({guestList, deleteGuestFromDb, Guest, DeleteGuest}) {
   console.log('In GuestList Component with:', guestList);
 
   return (
@@ -16,11 +15,7 @@ function GuestList ({guestList, deleteGuestFromDb}) {
         </thead>
         <tbody>
           {guestList.map(guest => (
-            <tr key={guest.id}>
-              <td>{guest.name}</td>
-              <td>{String(guest.kidsMeal)}</td>
-              <DeleteGuest guestId={guest.id} deleteGuestFromDb={deleteGuestFromDb}/>
-            </tr>
+            <Guest guest={guest} deleteGuestFromDb={deleteGuestFromDb} DeleteGuest={DeleteGuest}/>
           ))}
         </tbody>
       </table>
