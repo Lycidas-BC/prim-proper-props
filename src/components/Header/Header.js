@@ -1,7 +1,7 @@
 import './Header.css';
 
 function Header (props) {
-  console.log('In Header Component with props:', props);
+  console.log('In Header Component with:', props);
 
   return (
     <>

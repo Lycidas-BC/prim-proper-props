@@ -1,7 +1,7 @@
 import './Footer.css';
 
 function Footer (props) {
-  console.log('In Footer Component with props:', props);
+  console.log('In Footer Component with:', props);
 
   return (
     <>
